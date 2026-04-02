@@ -1,0 +1,53 @@
+{
+  "name": "@rquanx/config-manager",
+  "version": "0.1.0",
+  "description": "CLI tool for managing configuration snapshots across multiple files and folders.",
+  "homepage": "https://github.com/rquanx/config-manager#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rquanx/config-manager.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rquanx/config-manager/issues"
+  },
+  "type": "module",
+  "bin": {
+    "config-manager": "dist/index.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsup src/index.tsx --format esm --dts --target node20 --clean",
+    "dev": "tsx src/index.tsx",
+    "lint": "tsc --noEmit",
+    "test": "pnpm build && node --test test/**/*.test.mjs",
+    "pack:check": "pnpm build && npm pack --dry-run",
+    "prepublishOnly": "pnpm test"
+  },
+  "keywords": [
+    "cli",
+    "config",
+    "ink",
+    "snapshot"
+  ],
+  "author": "rquanx",
+  "license": "MIT",
+  "dependencies": {
+    "ink": "^6.8.0",
+    "react": "^19.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.6.1",
+    "@types/react": "^19.2.2",
+    "tsup": "^8.5.0",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  }
+}
