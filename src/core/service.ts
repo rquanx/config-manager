@@ -245,6 +245,7 @@ async function saveCurrentChangesBeforeSwitch(
   const choice = await chooseOrThrow(context, "Current files differ from the active item.", [
     {label: `Overwrite current item "${group.activeItem}"`, value: "overwrite"},
     {label: "Save as a new item", value: "new"},
+    {label: "Ignore current changes and switch anyway", value: "discard"},
     {label: "Cancel", value: "cancel"},
   ]);
 
@@ -256,6 +257,10 @@ async function saveCurrentChangesBeforeSwitch(
     }
     group.updatedAt = nowIso();
     await writeGroup(group);
+    return;
+  }
+
+  if (choice === "discard") {
     return;
   }
 

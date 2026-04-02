@@ -96,7 +96,7 @@ Behavior:
 - only the paths configured in the group are restored
 - files and directories are overwritten from the target snapshot
 - extra unmanaged files are left untouched
-- if current files differ from the active item, the CLI asks whether to overwrite the current item or save a new item before switching
+- if current files differ from the active item, the CLI asks whether to overwrite the current item, save a new item, or ignore current changes and switch anyway
 - `--force` skips that prompt and switches immediately
 
 ### Show all groups with active item
