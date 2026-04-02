@@ -152,5 +152,27 @@ pnpm lint
 pnpm build
 pnpm test
 pnpm pack:check
-pnpm publish --access public
 ```
+
+## Release
+
+This repository publishes to npm automatically through GitHub Actions when a version tag is pushed.
+
+Before the first release, add `NPM_TOKEN` to the repository's GitHub Actions secrets.
+
+Release flow:
+
+```bash
+# 1. update package.json version and changelog
+git add package.json CHANGELOG.md
+git commit -m "release: v0.1.1"
+
+# 2. push the release commit
+git push origin master
+
+# 3. create and push the matching tag
+git tag v0.1.1
+git push origin v0.1.1
+```
+
+The workflow will install dependencies, run tests, verify that the tag matches `package.json`, and then publish the package to npm.
